@@ -1,0 +1,249 @@
+html, body, { height: 100%; margin: 0; padding: 0; overflow: hidden}
+#pano { height: 100%;
+       z-index: 1 }
+
+body {
+    background: #1c262f;
+}
+
+#btn-interets {
+    float: right;
+    width: 70%;
+    height: 50px;
+    padding: 6px;
+    margin-top: 5%;
+    margin-right: -30px;
+}
+
+#btn-reperes {
+    float: left;
+    width: 70%;
+    height: 50px;
+    padding: 6px;
+    margin-top: 5%;
+    margin-left: -30px;
+}
+
+#question {
+    background: #e3e3e3;
+    margin: 0px auto;
+    border-radius:9px;
+    width: 80%;
+    height: 60px;
+    padding: 6px;
+    padding-top: 2%;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 3%;
+    display: none;
+    font-size: 2em;
+    font-weight: 500;
+/*    border: solid 3px #222;
+*/    box-shadow: 5px 5px 25px black;
+}
+
+
+
+
+#side-bar {
+    box-shadow: 0px -10px 30px #111;
+    background-color: #2c363f;
+    z-index: 10;
+    height: 15%;
+}
+#panel-1-inside, #panel-2-inside, #panel-3-inside {
+    margin-right: -15px;
+    margin-left: -15px;
+    border: 0;
+    box-shadow: 5px 5px 15px #333;
+    opacity: 0.9;
+    color: #2e3d49;
+}
+.navbar {
+    background-color: #1c262f;
+    box-shadow: 0 5px 15px black;
+    border-color:transparent;
+}
+.navbar-brand {
+    position: relative;
+    top: -5px;
+    left: -10px;
+}
+
+.panel-body {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#panel-2, #panel-3 {
+    display: none;
+    position: relative;
+}
+
+#btn-quart, .btn[type=submit] {
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#score {
+    width: 100%;
+    font-size: 2.5rem;
+    color: #007E33;
+}
+
+#distances {
+    margin-top: 1.5em;
+    font-weight: 500;
+    font-size: 1em;
+}
+#quart {
+    color: #4285F4;
+}
+
+#pano {
+    height: 85%;
+}
+.navbar {
+    opacity: 0.7;
+}
+/* media query for desktop and laptop */
+@media screen and (min-width: 992px) {
+
+    #panel-1, #panel-3 {
+        margin-top: 1%;
+    }
+    #panel-2 {
+        margin-top: 5%;
+    }
+    #side-bar {
+        overflow: hidden;
+    }
+    #distances li {
+        margin-top: 1.2em;
+    }
+    .btn-group {
+        margin-top: 3em;
+    }
+}
+
+/* media query for tablet devices */
+@media screen and (max-width: 991px) and (min-width: 521px) {
+    html, body, { height: 100%; margin: 0; padding: 0; overflow: hidden;}
+    #pano{
+        height: 85%;
+    }
+    #side-bar {
+        height: 15%;
+        padding-top: 1em;
+        overflow: hidden;
+        box-shadow: 0 -5px 10px 0;
+    }
+#btn-interets {
+    float: right;
+    width: 125%;
+    height: 50px;
+    padding: 6px;
+    margin-top: 10%;
+    margin-right: -25%;
+}
+
+#btn-reperes {
+    float: left;
+    width: 125%;
+    height: 50px;
+    padding: 6px;
+    margin-top: 10%;
+    margin-left: -25%;
+}
+    #panel-1-inside, #panel-2-inside, #panel-3-inside {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .panel-body {
+        font-size: 18px;
+    }
+
+    #panel-2 , #panel-3 {display: none;}
+
+    #btn-quart, .btn[type=submit] {
+        position: relative;
+/*                top: 0.7rem;
+*/                font-size: 22px;
+    }
+
+
+}
+
+
+ /*media query for mobile devices*/
+@media screen and (max-width: 520px) {
+    #pano
+ {height: 65%;}
+
+    #side-bar {
+        height: 35%;
+        padding-top: 1em;
+        overflow: hidden;
+    }
+
+    #btn-interets {
+        float: right;
+        width: 115%;
+        height: 50px;
+        padding: 6px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-right: -8%;
+        margin-left: 0;
+    }
+
+    #btn-reperes {
+        float: left;
+        width: 115%;
+        height: 50px;
+        padding: 6px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+        margin-left: -8%;
+        margin-right: 0;
+    }
+
+    #panel-1, #panel-2, #panel-3 {
+        margin-top: 0;
+    }
+
+    #panel-2, #panel-3{display: none;}
+
+    .navbar {
+        position: fixed;
+        top: -60px;
+    }
+    .navbar-toggle {
+        position: relative;
+        top: 60px;
+        z-index: 10;
+        background-color: #1c262f ;
+    }
+
+    .navbar-brand {
+        font-size: 14px;
+    }
+
+    #side-bar {
+        box-shadow: 0px -5px 20px #222;
+    }
+    .panel-body {
+        font-size: 14px;
+    }
+    #btn-quart, .btn[type=submit] {
+        font-size: 14px;
+    }
+
+    #distances {
+        margin-top: 0.7em;
+    }
+}
+
+

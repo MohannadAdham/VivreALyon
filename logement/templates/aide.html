@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Aide à la Décision{% endblock %}
+
+
+{% block content_head %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Test geoserver -->
+    <!-- <link rel="stylesheet" href="http://localhost:8080/geoserver/openlayers3/ol.css" type="text/css"> -->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.0.js' %}"></script>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <!-- <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import bootstrap -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aide_preferences.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bounce.css' %}">
+    <!-- Import Bootstrap-Slider -->
+	<!--     <link rel="stylesheet" type="text/css" href="{% static 'css/ol-layerswitcher.css' %}">
+ -->    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+	<style>
+	.slider-selection {
+	    background: #aa66cc;
+	}
+	.slider-track-high {
+		background: #2BBBAD;
+	}
+	#slider1, #slider2 .slider-selection {
+		background: #AAA !important;
+	}
+</style>
+
+{% endblock %}
+
+
+{% block content_body %}
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-md-push-4"><div id="map" style="height: 92%; margin-top: 6%; margin-left: -1.5%; width: 103.5%; margin-right: -1% !important;"></div></div>
+        <div id="map2" class="col-md-1"></div>
+        <div id="side-bar" class="col-xs-12 col-md-4 col-md-pull-8" styl="height: 80%;">
+            <div class="row" style="height: 100%">
+                <div id="panel-0" class="col-md-12" style="height: 100px"><div>
+                <div id="panel-1" class="col-xs-12 col-md-12">
+                    <div id="panel-1-inside" class="panel panel-primary">
+                    <form class="form"  method="post">
+                    	{% csrf_token %}
+                        <div class="panel-body"><span style="color: #4285F4">Sélectionnez les <span style="color: #395">trois</span> critères les plus importants pour vous</span> <br><br>
+    
+                        <div class="custom-control custom-checkbox">
+                        {% for criterion in criteria %}
+                            <input type="checkbox" value={{ forloop.counter0 }} class="custom-control-input" name="criteria_choice_{{ forloop.counter0 }}" id="customCheck{{ forloop.counter0 }}" style="margin-bottom: 2em; font-size: 13px; "><label class="custom-control-label" for="criteria_choice_{{ forloop.counter0 }}" style="font-size: 13px; margin-left: 1em">  {{ criterion }} &nbsp;&nbsp;&nbsp;<img src="{% static "" %}images/{{forloop.counter0}}.png" ></label>
+                            <br>
+                        {% endfor %}
+                        </div><br>
+                        <div id="warning-1" hidden style="margin-top: -15px; margin-bottom: 10px"><span style="color: #B34;" class="glyphicon glyphicon-warning-sign glyphicon-danger"></span><span style="color: #B34; font-weight: 700">&nbsp; Sélectionnez exactement trois critères</span></div>
+
+
+                        <button type="submit" id="submit1" class="btn-submit btn btn-success btn-block btn-lg">Valider</button><br>
+
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+
+                <script type="text/javascript">
+                    // Test user id and resut id
+                    var user_id = {{ user_id }};
+                </script>
+
+
+                 <div id="panel-2" class="col-xs-12 col-md-12">
+                    <div id="panel-2-inside" class="panel panel-primary">
+                        <div class="panel-body">Comparez entre chaque deux critères <br>
+                        <br><br>
+                        <form class="form">
+                           <span id="c1-1" data-toggle="tooltip" data-placement="top" title="test"><img src=""> &nbsp;&nbsp;&nbsp;&nbsp;<span><input id="slider1" data-slider-id='slider1Slider' type="text" data-slider-min="1" data-slider-max="9" data-slider-step="1" data-slider-value="6"/><span id="c2-1" data-toggle="tooltip"> &nbsp;&nbsp;&nbsp;<img src=""> <span>
+						   <br><br><br>
+                           <span id="c2-2" data-toggle="tooltip"><img src=""> &nbsp;&nbsp;&nbsp;&nbsp;<span><input id="slider2" data-slider-id='slider2Slider' type="text" data-slider-min="1" data-slider-max="9" data-slider-step="1" data-slider-value="4"/><span id="c3-1" data-toggle="tooltip"> &nbsp;&nbsp;&nbsp;&nbsp;<img src=""> <span>
+						   <br><br><br>
+                           <span id="c1-2" data-toggle="tooltip"><img src=""> &nbsp;&nbsp;&nbsp;&nbsp;<span><input id="slider3" data-slider-id='slider3Slider' type="text" data-slider-min="1" data-slider-max="9" data-slider-step="1" data-slider-value="6"/><span id="c3-2" data-toggle="tooltip"> &nbsp;&nbsp;&nbsp;&nbsp;<img src=""> <span>
+						   <br><br><br><br>
+                        	<button type="submit" id="submit2" class="btn-submit btn btn-success btn-block btn-lg">Valider</button><br>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div id="panel-3" class="col-xs-12 col-md-12">
+                	<div id="panorama" class="col-md-12" style="height: 70vw; width: 114%; margin-left: -7%"></div>
+           		</div>
+
+                <div id="panel-4" class="col-xs-12 col-md-12">
+	                <div id="panel-4-inside" class="panel panel-primary">
+	                    <div class="panel-body"><div style="color: #4285F4; text-align: center;">Cliquez sur la carte pour sélectionner un lieu important pour vous : (travail, école, etc.)</div>
+	                    	<br>
+	                        <div class='pin'></div>
+							<div class='pulse'></div>
+							<br><br><br><br>
+
+                       		<div style=" font-weight: 400"><span style="color: #395; margin-top:10em" class="glyphicon glyphicon-info-sign glyphicon-success"></span>&nbsp; vous pouvez zoomer et vous déplacer dans la carte</div><br><br>
+
+	                    </div>
+	                </div>
+                </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div id="popup" title="Welcome to OpenLayers" style="opacity: 0.5; width: 450px"></div>
+
+
+<!-- _________________________ D3.js _________________________________ -->
+
+
+
+    <style>
+
+    #canvas-d3 {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 480px;
+        height: 250px;
+        position: relative;
+        opacity: 0.5;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        position: center;
+        margin-left: -5px;
+        padding-left: 20px;
+    }
+
+    .toolTip-d3 {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: absolute;
+        display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        text-align: center;
+    }
+
+    text {
+        font: 10px sans-serif;
+        color: white;
+    }
+    text.value {
+        font-size: 120%;
+        font-weight: 600;
+        /*fill: #eee;*/
+    }
+
+    .axisHorizontal path{
+        fill: none;
+    }
+
+    .axisHorizontal .tick line {
+        stroke-width: 1;
+        stroke: rgba(0, 0, 0, 0.2);
+    }
+
+/*    .bar {
+        fill: steelblue;
+        fill-opacity: 0.7;
+    }*/
+
+</style>
+
+
+	<div id="canvas-d3"></div>
+    	<!-- _____________________ imports ___________________ -->
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+    <!-- Test Geoserver -->
+    <!-- <script src="http://localhost:8080/geoserver/openlayers3/ol.js" type="text/javascript"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.6.4/ol-debug.js"></script>
+    <!-- <script type="text/javascript" src="{% static 'js/ol-layerswitcher.js' %}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'js/aide.js' %}"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYy2PP3wd5eysIDe9q-qL3cQ4Sx80nz_M&libraries=geometry&callback=initMap" async defer>
+    </script>
+    <audio id="drop-audio" src="{% static 'sounds/Button.mp3' %}"></audio>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+    <script type="text/javascript">var icon_path = "{% static 'images/marker.png' %}"</script>
+
+
+ <!-- __________________________________________________________________ -->
+
+<!-- ________________ Test xhttp response ________________ -->
+<div id="test-response"></div>
+
+<!-- ________________________________________________________ -->
+
+<script>
+
+	// var img1 = '{% static "images/0.png" %}';
+	// var img2 = '{% static "images/3.png" %}';
+	// var img3 = '{% static "images/7.png" %}';
+	// var img4 = '{% static "images/9.png" %}';
+
+
+
+
+    // data = [
+    //     // {label:"Category 1", value:85},
+    //     // {label:"Category 2", value:77},
+    //     // {label:"Category 3", value:91},
+    //     // {label:"Category 4", value:72},
+    //     {img:img1, value:85},
+    //     {img:img2, value:77},
+    //     {img:img3, value:91},
+    //     {img:img4, value:72},
+    // ];
+
+
+    // var div = d3.select("#canvas-d3").append("div").attr("class", "toolTip-d3");
+
+    // var axisMargin = 20,
+    //         margin = 30,
+    //         valueMargin = 4,
+    //         width = parseInt(d3.select('#canvas-d3').style('width'), 10),
+    //         height = parseInt(d3.select('#canvas-d3').style('height'), 10),
+    //         barHeight = (height-axisMargin-margin*2)* 0.4/data.length,
+    //         barPadding = (height-axisMargin-margin*2)*0.6/data.length,
+    //         data, bar, svg, scale, xAxis, labelWidth = 0;
+
+    // max = d3.max(data, function(d) { return d.value; });
+
+    // svg = d3.select('#canvas-d3')
+    //         .append("svg")
+    //         .attr("width", width)
+    //         .attr("height", height);
+
+
+    // bar = svg.selectAll("g")
+    //         .data(data)
+    //         .enter()
+    //         .append("g");
+
+    // bar.attr("class", "bar")
+    //         .attr("cx",0)
+    //         .attr("transform", function(d, i) {
+    //             return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+    //         });
+
+
+
+    //       bar.each(function(d,i){
+    //       	d3.select(this)
+    //       		.append('image')
+			 //          .attr('xlink:href', data[i].img)
+			 //          .attr("y", (barHeight / 2) - 18)
+			 //          .attr("x", -44)
+			 //          .attr("id", 'cr'+i)
+			 //          .attr('width',36)
+			 //          .attr('height',36);
+    //       });
+
+
+
+
+    // scale = d3.scale.linear()
+    //         .domain([0, max])
+    //         .range([0, width - margin*2 - 52]);
+
+    // xAxis = d3.svg.axis()
+    //         .scale(scale)
+    //         .tickSize(-height + 2*margin + axisMargin)
+    //         .orient("bottom");
+
+    // bar.append("rect")
+    //         .attr("transform", "translate("+labelWidth+", 0)")
+    //         .attr("height", barHeight)
+    //         .attr("width", function(d){
+    //             return scale(d.value);
+    //         });
+
+    // bar.append("text")
+    //         .attr("class", "value")
+    //         .attr("y", barHeight / 2)
+    //         .attr("dx", -valueMargin + labelWidth) //margin right
+    //         .attr("dy", ".35em") //vertical align middle
+    //         .attr("text-anchor", "end")
+    //         .text(function(d){
+    //             return (d.value+"%");
+    //         })
+    //         .attr("x", function(d){
+    //             var width = this.getBBox().width;
+    //             return Math.max(width + valueMargin, scale(d.value));
+    //         });
+
+    // bar
+    //         .on("mousemove", function(d){
+    //             div.style("left", d3.event.pageX+10+"px");
+    //             div.style("top", d3.event.pageY-25+"px");
+    //             div.style("display", "inline-block");
+    //             div.html((d.label)+"<br>"+(d.value)+"%");
+    //         });
+    // bar
+    //         .on("mouseout", function(d){
+    //             div.style("display", "none");
+    //         });
+
+    // svg.insert("g",":first-child")
+    //         .attr("class", "axisHorizontal")
+    //         .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+    //         .call(xAxis);
+
+</script>
+    </div>
+
+
+
+
+{% endblock %}

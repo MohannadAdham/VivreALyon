@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/lion_red_28.png' %}">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.0.js' %}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <link href="{% static 'css/bootstrap-social.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block content_head %}
+    {% endblock %}
+</head>
+
+<body>
+    {% include "navbar.html" %}
+    {% block content_body %}
+    {% endblock %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+
+</body>
+</html>

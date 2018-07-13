@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'images/lion_red_28.png' %}">
+    <title>Accueil</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.0.js' %}"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"> -->
+    <link href="{% static 'css/bootstrap-social.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+{% include "navbar.html" %}
+
+    <header class="jumbotron">
+        <div class="container-fluid">
+            <div class="row row-logos">
+
+                <a href="https://www.univ-st-etienne.fr/fr/formation/master-XB/sciences-humaines-et-sociales-SHS/master-geomatique-program-master-geomatique-parcours-geographies-numeriques.html" target="_blank"><div class="col-md-4 logo"><img src="{% static 'images/ujm_transp.png' %}"></div></a>
+                <a href="https://ghhat.univ-lyon2.fr/geographie-geomatique-eau-environnement-developpement-517268.kjsp" target="_blank"><div class="col-md-4 logo"><img src="{% static 'images/Lyon2_transp.png' %}"></div></a>
+            	<a href="http://www.ens-lyon.fr/formation/offre-de-formation/master/geographies-numeriques" target="_blank"><div class="col-md-4 logo"><img src="{% static 'images/ENS_transp.png' %}"></div></a>
+            </div>
+            <div class="row row-header">
+                <div class="col-xs-8 col-sm-7 col-md-6 col-md-push-3">
+                    <h1 id="header1" >VIVRE À LY<img style="margin-left: -14px; margin-right: -14px;" src="{% static 'images/lion_128.png' %}">N</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" >
+                <div class="card">
+                   <a href="quartiers.php"><img  src="{% static 'images/quartiers_2.png' %}" class="img-responsive"></a>
+                   <div class="card-head">Test 1 : Positions des Quartiers</div>
+                   <div class="card-body">condition préalable : Aucune</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card">
+                    <a href="quartiers_centres.php"><img  src="{% static 'images/quartiers_centres_3.png' %}" class="img-responsive"></a>
+                    <div class="card-head">Test 2 : Centres des Quartiers</div>
+                   <div class="card-body">condition préalable : Test 1</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card">
+                    <a href="interets_reperes.php"><img  src="{% static 'images/interets_reperes.png' %}" class="img-responsive"></a>
+                    <div class="card-head">Test 3 : Points d'Interets VS Points de repères</div>
+                   <div class="card-body">condition préalable : Test 2</div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+        </div>
+
+
+    </main>
+
+
+
+
+    <footer class="row-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Tests</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-sm-5">
+                    <h5>Our Address</h5>
+                    <address>
+                      ...<br>
+                      ...<br>
+                      ...<br>
+                      <i class="fa fa-phone"></i>: +33<br>
+                      <i class="fa fa-fax"></i>: +33<br>
+                      <i class="fa fa-envelope"></i>:
+                        <a href="mailto:confusion@food.net">mohannad.adm"gmail.com</a>
+                   </address>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="nav navbar-nav" style="padding: 40px 10px;">
+                        <a class="btn btn-social-icon btn-google-plus" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <p style="padding:10px;"></p>
+                    <p align=center>© Copyright 2017 Université Jean Monnet</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+body {
+    background: white;
+}
+
+
+.jumbotron   {
+    height: 100vh;
+    background-size: cover;
+    background-image: url("../images/cover2.jpg");
+    background-position: center center;
+}
+
+h1, h3, h4, h5, .logo  {
+text-align: center;
+
+}
+
+.row-logos {
+        position: relative;
+        top: 3vh;
+        height: 17vh;
+        background-color : rgba(255, 255, 255, 0.6);
+      }
+
+
+.card {
+    margin-top: 2em;
+    box-shadow: 5px 5px 25px 0;
+    border-radius: 0.375em;
+    height: 22.5em;
+    background-color: #fff;
+
+    }
+
+
+footer {
+    margin-top: 4em;
+}
+
+.card-head {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10%;
+    font-weight: 500;
+    font-size: 2rem;;
+    line-height: 2.25rem;
+    color: #2e3d49;
+    font-family: "Open Sans", sans-serif;
+}
+
+.card-body {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 6%;
+    font-size: 1.5rem;
+    color: #2e3d49;
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+}
+
+#header1 {
+    color:rgb(250, 250, 250);
+    font-size: 8em;
+    font-family: Anton;
+    font-weight: 200;
+    float: none;
+    text-shadow: 3px 3px 6px #333;
+/*    display: table-cell;*/
+    height: 380px;
+    opacity: 0.75;
+    vertical-align: middle;
+    padding-top: 18%;
+}
+
+.text-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+#top {
+    height: 75px;
+}
+
+
+footer {
+    background-color: #222;
+}
+
+
+
+@media screen and (max-width: 589px) {
+
+        .card {
+            height: 50vh;
+        }
+
+        .jumbotron {
+            height: 100vh;
+        }
+
+}
+
+@media screen and (max-width: 767px) and (min-width: 590px) {
+
+        .card {
+        height: 38em;
+        }
+
+        .card-head {
+        font-size:  2.5rem;
+        }
+
+        .card-body {
+        font-size: 1.8rem;
+        }
+}
+
+@media screen and (max-width: 390px) {
+
+        .navbar-brand {
+            display: none;
+        }
+    };
+
+
+.navbar {
+    background-color: #555;
+    box-shadow: 0 5px 15px black;
+    border-color:transparent;
+}
+.navbar-brand {
+    position: relative;
+    top: -5px;
+    left: -30px;
+}
+
+
+
+

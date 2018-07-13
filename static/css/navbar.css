@@ -1,0 +1,37 @@
+.navbar {
+    background-color: #1c262f;
+    box-shadow: 0 5px 15px black;
+    border-color:transparent;
+}
+.navbar-brand {
+    position: relative;
+    top: -5px;
+    left: -10px;
+}
+
+
+@media screen and (max-width: 520px) {
+
+
+	    .navbar {
+        position: fixed;
+        top: -60px;
+    }
+    .navbar-toggle {
+        position: relative;
+        top: 60px;
+        z-index: 10;
+        background-color: #1c262f ;
+    }
+
+    .navbar-brand {
+        font-size: 14px;
+    }
+
+}
+
+.active-page {
+	background-color: #3c464f;
+	height: 55px;
+/*	color: #2f2f2f;
+*/}

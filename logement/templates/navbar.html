@@ -1,0 +1,33 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+<nav  role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}" style="margin-top: 4px;">VIVRE À LY<span><img style="margin-left: -1px; margin-right: -1px;" src="{% static 'images/lion_red_28.png' %}"></span>N </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" >
+                <ul class="nav navbar-nav">
+                    {% with active="background-color: #3c464f; height: 55px; color: #2f2f2f;" active_text="color: #eee;" %}
+
+                    <li {% if request.get_full_path == "/" %} style="{{ active }}" {% endif %}><a href="{% url 'home' %}" {% if request.get_full_path == "/" %}style="{{ active_text }}"{% endif %}><span class="glyphicon glyphicon-home"
+                         aria-hidden="true" Style="color: #B34;"></span> Accueil</a></li>
+                    <li {% if request.get_full_path == "/aide/" %} style="{{ active }}" {% endif %}><a href="{% url 'aide' %}" {% if request.get_full_path == "/aide/" %}style="{{ active_text }}"{% endif %}> Aide à la décision</a></li>
+
+                    <li {% if request.get_full_path == "/preferences/" %} style="{{ active }}" {% endif %}><a href="{% url 'preferences' %}" {% if request.get_full_path == "/preferences/" %}style="{{ active_text }}"{% endif %}> Préférences</a></li>
+
+
+
+                    <li {% if request.get_full_path == "/about/" %} style="{{ active }}" {% endif %}><a href="{% url 'about' %}" {% if request.get_full_path == "/about/" %}style="{{ active_text }}"{% endif %}><span class="glyphicon glyphicon-info-sign" aria-hidden="true" Style="color: #B34;"></span> À propos</a></li>
+
+                    <li {% if request.get_full_path == "/contact/" %} style="{{ active }}" {% endif %}><a href="{% url 'contact' %}" {% if request.get_full_path == "/contact/" %}style="{{ active_text }}"{% endif %}><i class="fa fa-envelope-o" Style="color: #B34;"></i> Contact</a></li>
+                    {% endwith %}
+                </ul>
+            </div>
+    </nav>
