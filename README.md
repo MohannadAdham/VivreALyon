@@ -6,7 +6,7 @@ A web-based decision support system that gives personalized recommendations on w
 <img src="images/Schema_technologique_2.png>
 
 <h3>Home Page</h3>
-<img src="images/Home page.png>
+<img src="images/Home page.png">
 
 <h3>Step 1: Criteria Selection</h3>
 <img src="images/Selecting Criteria.png"/>
