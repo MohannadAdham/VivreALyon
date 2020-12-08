@@ -1,0 +1,6 @@
+django
+GEOS
+GDAL
+PROJ4
+django-raster
+shapely
